@@ -4,7 +4,7 @@ const db = require("./db/db.json");
 const fs = require("fs");
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const prevNotes = [];
 
@@ -26,7 +26,7 @@ app.get("/api/notes", (req, res) => {
     
     // send notes to the client
     
-    return res.json(prevNotes);
+    return res.json(db);
     
 
 });
@@ -53,9 +53,22 @@ app.post('/api/notes', (req, res) => {
     }
   
     // Log the response body to the console
-    console.log('review', req.body);
-    prevNotes.push(req.body)
-    console.log('prev notes', prevNotes)
+    console.log('note', req.body);
+    const data = req.body
+    
+
+    console.log('db', db)
+    console.log('data type', typeof data)
+    db.push(data)
+
+    db.map((note, index) => {
+            note.id = index + 1});
+    console.log('data', data)
+    
+
+    // fs.appendFileSync('db/db.json', JSON.stringify(prevNotes));
+
+
   });
 
 
@@ -68,5 +81,8 @@ app.listen(PORT, () =>
 
 
 // to do: link returned responses (previous notes) to db.json file.
-let data = JSON.stringify(prevNotes);
-    fs.writetoFile("./db/db.json", data)
+
+// Use fs.readFile() method to read the file
+// fs.readFile('demo.txt', (err, data) => {
+//     console.log(data);
+//  })
