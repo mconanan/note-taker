@@ -6,5 +6,7 @@ Once clicked, the notes.html file is populated. This screen contains a text inpu
 
 The user is able to click on previous notes, and they are brought back into the main text field to view. Data persists on screen refresh.
 
-link to repo: 
-link to deployed webpage:
+<img src="./public/assets/screenshot.png" alt="note taker app screenshot."/>
+
+link to repo: https://github.com/mconanan/note-taker
+link to heroku-deployed webpage: https://immense-woodland-63501.herokuapp.com/
